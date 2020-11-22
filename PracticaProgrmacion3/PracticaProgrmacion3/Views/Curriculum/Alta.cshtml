@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Alta";
+}
+
+<h2>Alta</h2>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form method="post" action="~/Views/Curriculum/Curriculum.cshtml" >
+            <div class="form-group">
+                <label>NOMBRE</label>
+                <input type="text" value="nombre" name="nombre" />
+            </div>
+            <div class="form-group">
+                <label>APELLIDO</label>
+                <input type="text" value="apellido" name="apellido"/>
+            </div>
+            <div>
+                <input type="button" name="btnCargar" value="CARGAR"/>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+
