@@ -120,11 +120,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CurriculumController.cs" />
+    <Compile Include="Controllers\LavadoController.cs" />
+    <Compile Include="GestorDatos\GestorBD.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Persona.cs" />
+    <Compile Include="Models\DTOlistado.cs" />
+    <Compile Include="Models\informacion.cs" />
+    <Compile Include="Models\Lavado.cs" />
+    <Compile Include="Models\Tipo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -160,12 +164,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Curriculum\Curriculum.cshtml" />
-    <Content Include="Views\Curriculum\Alta.cshtml" />
+    <Content Include="Views\Lavado\Alta.cshtml" />
+    <Content Include="Views\Lavado\Listado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

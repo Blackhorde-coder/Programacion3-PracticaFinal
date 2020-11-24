@@ -1,0 +1,33 @@
+﻿@model PracticaProgrmacion3.Models.informacion
+@{
+    ViewBag.Title = "Alta";
+}
+<div class="col-md-2"></div>
+<div class="col-md-8">
+    <h2>ALTA LAVADO XDXDXD123</h2>
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <label>Tipos</label>
+            @Html.DropDownListFor(x => x.lavado.Idtipo, new SelectList(Model.listado, "idtipo", "Nombre"))
+        </div>
+        <div class="form-group">
+            <label>PATENTE</label>
+            @Html.TextBoxFor(x => x.lavado.Patente)
+        </div>
+        <div class="form-group">
+            <label>TAXI</label>
+            @Html.CheckBoxFor(x => x.lavado.Taxi)
+        </div>
+        <div class="form-group">
+            <label>HABITUAL</label>
+            @Html.CheckBoxFor(x => x.lavado.Habitual)
+        </div>
+        <div>
+            <input type="submit" value="ACEPTAR" />
+        </div>
+    }
+</div>
+<div class="col-md-2"></div>
+
+

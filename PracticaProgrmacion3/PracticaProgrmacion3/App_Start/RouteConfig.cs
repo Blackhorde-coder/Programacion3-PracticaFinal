@@ -16,7 +16,7 @@ namespace PracticaProgrmacion3
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Curriculum", action = "Curriculum", id = UrlParameter.Optional }
+                defaults: new { controller = "Lavado", action = "Alta", id = UrlParameter.Optional }
             );
         }
     }

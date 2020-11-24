@@ -1,0 +1,22 @@
+﻿@model List<PracticaProgrmacion3.Models.DTOlistado>
+@{
+    ViewBag.Title = "Listado";
+}
+
+<h2>Listado</h2>
+
+<table>
+    <tr>
+        <th>Patente</th>
+        <th>Tipo</th>
+        <th>Precio</th>
+    </tr>
+    @foreach (var l in Model)
+    {
+        <tr>
+            <td>@l.patente</td>
+            <td>@l.nombre</td>
+            <td>@l.precio</td>
+        </tr>
+    }
+</table>
