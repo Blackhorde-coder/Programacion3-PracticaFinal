@@ -29,6 +29,13 @@ namespace PracticaProgrmacion3.Controllers
             lista = gestor.listadoLavados();
             return View("Listado",lista);
         }
+        public ActionResult Listado()
+        {
+            GestorBD gestor = new GestorBD();
+            List<DTOlistado> lista = new List<DTOlistado>();
+            lista = gestor.listadoLavados();
+            return View(lista);
+        }
 
 
     }
