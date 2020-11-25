@@ -121,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\LavadoController.cs" />
+    <Compile Include="Controllers\TipoController.cs" />
     <Compile Include="GestorDatos\GestorBD.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -166,6 +167,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Lavado\Alta.cshtml" />
     <Content Include="Views\Lavado\Listado.cshtml" />
+    <Content Include="Views\Lavado\Editar.cshtml" />
+    <Content Include="Views\Lavado\Eliminar.cshtml" />
+    <Content Include="Views\Tipo\AltaTipo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

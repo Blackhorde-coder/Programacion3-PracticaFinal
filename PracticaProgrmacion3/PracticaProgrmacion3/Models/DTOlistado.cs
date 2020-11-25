@@ -10,5 +10,6 @@ namespace PracticaProgrmacion3.Models
         public string patente { set; get; }
         public string nombre { set; get; }
         public double precio { set; get; }
+        public int idlavado { set; get; }
     }
 }

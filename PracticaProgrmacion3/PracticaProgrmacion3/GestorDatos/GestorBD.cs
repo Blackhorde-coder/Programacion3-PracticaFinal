@@ -38,7 +38,28 @@ namespace PracticaProgrmacion3.GestorDatos
                 tipo.Precio = double.Parse(dr["precio"].ToString());
                 lista.Add(tipo);
             }
+            dr.Close();
+            con.Close();
             return lista;
+        }
+        public Lavado BuscarLavado(int idLavado)
+        {
+            string consultasql = "select * from Lavados where idLavado = @idLavado";
+            con.ConnectionString = @"Data Source = BLACKHORDENOT; Initial Catalog = Lavadero; Integrated Security = True";
+            con.Open();
+            cmd = new SqlCommand(consultasql, con);
+            cmd.Parameters.AddWithValue("@idLavado", idLavado);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            Lavado lavado = new Lavado();
+            lavado.Id = int.Parse(dr["idLavado"].ToString());
+            lavado.Patente = dr["patente"].ToString();
+            lavado.Taxi = bool.Parse(dr["taxi"].ToString());
+            lavado.Habitual = bool.Parse(dr["habitual"].ToString());
+            lavado.Idtipo = int.Parse(dr["idTipo"].ToString());
+            dr.Close();
+            con.Close();
+            return lavado;
         }
         public void cargarLavado(Lavado l)
         {
@@ -68,8 +89,8 @@ namespace PracticaProgrmacion3.GestorDatos
         {
             List<DTOlistado> lista = new List<DTOlistado>();
             con.ConnectionString = @"Data Source = BLACKHORDENOT; Initial Catalog = Lavadero; Integrated Security = True";
-            string consultasql = @"select l.patente 'patente', t.nombre'tipo', t.precio'costo'
-                                    from lavados l
+            string consultasql = @"select l.patente 'patente', t.nombre'tipo', t.precio'costo', l.idLavado 'idlavado'
+                                    from lavados l 
                                     join tipos t on t.idTipo = l.idTipo";
             con.Open();
             cmd = new SqlCommand(consultasql, con);
@@ -80,6 +101,7 @@ namespace PracticaProgrmacion3.GestorDatos
                 dto.nombre = dr["tipo"].ToString();
                 dto.patente = dr["patente"].ToString();
                 dto.precio = double.Parse(dr["costo"].ToString());
+                dto.idlavado = int.Parse(dr["idlavado"].ToString());
                 lista.Add(dto);
             }
             dr.Close();
@@ -87,6 +109,77 @@ namespace PracticaProgrmacion3.GestorDatos
             
             return lista;
         }
-        
-    }
+        public void editarLavado(Lavado l)
+        {
+            con.ConnectionString = @"Data Source = BLACKHORDENOT; Initial Catalog = Lavadero; Integrated Security = True";
+            try
+            {
+                String consultasql = @"update Lavados 
+                                    set patente = @patente,
+	                                    taxi = @taxi,
+	                                    habitual=@habitual,
+	                                    idTipo=@idtipo
+                                    where idLavado =@idlavado";
+                con.Open();
+                cmd = new SqlCommand(consultasql, con);
+
+                cmd.Parameters.AddWithValue("@patente", l.Patente);
+                cmd.Parameters.AddWithValue("@taxi", l.Taxi);
+                cmd.Parameters.AddWithValue("@habitual", l.Habitual);
+                cmd.Parameters.AddWithValue("@idtipo", l.Idtipo);
+                cmd.Parameters.AddWithValue("@idlavado", l.Id);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void eliminarLavado(int idlavado)
+        {
+            con.ConnectionString = @"Data Source = BLACKHORDENOT; Initial Catalog = Lavadero; Integrated Security = True";
+            try
+            {
+                String consultasql = " delete from lavados where idlavado = @idlavado";
+                con.Open();
+                cmd = new SqlCommand(consultasql, con);
+                cmd.Parameters.AddWithValue("@idlavado", idlavado);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void cargarTipo(Tipo t)
+        {
+            con.ConnectionString = @"Data Source = BLACKHORDENOT; Initial Catalog = Lavadero; Integrated Security = True";
+            try
+            {
+                String consultasql = "insert into tipos (nombre, precio) values (@nombre, @precio)";
+                con.Open();
+                cmd = new SqlCommand(consultasql, con);
+
+                cmd.Parameters.AddWithValue("@nombre", t.Nombre);
+                cmd.Parameters.AddWithValue("@precio", t.Precio);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+        }
 }

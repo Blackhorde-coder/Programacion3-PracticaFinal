@@ -1,7 +1,5 @@
 ﻿@model List<PracticaProgrmacion3.Models.DTOlistado>
 @{
-                /**/
-
                 ViewBag.Title = "Listado";
 }
 
@@ -11,18 +9,23 @@
     <table class="table table-sm">
         <thead class="thead-dark">
             <tr>
-                <th>Patente</th>
-                <th>Tipo</th>
-                <th>Precio</th>
+                <th class="text-center">Patente</th>
+                <th class="text-center">Tipo</th>
+                <th class="text-center">Precio</th>
+                <th class="text-center">Acciones</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var l in Model)
             {
                 <tr>
-                    <td>@l.patente</td>
-                    <td>@l.nombre</td>
-                    <td>@l.precio</td>
+                    <td class="text-center">@l.patente</td>
+                    <td class="text-center">@l.nombre</td>
+                    <td class="text-center">@l.precio</td>
+                    <td class="text-center">
+                        <a href="/Lavado/Editar?idLavado=@l.idlavado" class="btn btn-success">Editar</a>
+                        <a href="/Lavado/Eliminar?idLavado=@l.idlavado" class="btn btn-danger">Eliminar</a>
+                    </td>
                 </tr>
             }
         </tbody>
