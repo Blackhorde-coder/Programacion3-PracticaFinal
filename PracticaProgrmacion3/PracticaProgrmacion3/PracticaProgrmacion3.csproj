@@ -121,12 +121,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\LavadoController.cs" />
+    <Compile Include="Controllers\ReportesController.cs" />
     <Compile Include="Controllers\TipoController.cs" />
     <Compile Include="GestorDatos\GestorBD.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DTOlistado.cs" />
+    <Compile Include="Models\DTOreporte.cs" />
     <Compile Include="Models\informacion.cs" />
     <Compile Include="Models\Lavado.cs" />
     <Compile Include="Models\Tipo.cs" />
@@ -170,6 +172,7 @@
     <Content Include="Views\Lavado\Editar.cshtml" />
     <Content Include="Views\Lavado\Eliminar.cshtml" />
     <Content Include="Views\Tipo\AltaTipo.cshtml" />
+    <Content Include="Views\Reportes\Reporte.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

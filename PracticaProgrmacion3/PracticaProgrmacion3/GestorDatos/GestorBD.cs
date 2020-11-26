@@ -179,7 +179,31 @@ namespace PracticaProgrmacion3.GestorDatos
             {
                 con.Close();
             }
+        }
+        public List<DTOreporte> reporte()
+        {
+            List<DTOreporte> lista = new List<DTOreporte>();
+            con.ConnectionString = @"Data Source = BLACKHORDENOT; Initial Catalog = Lavadero; Integrated Security = True";
+            string consultasql = @"select t.nombre 'servicio', sum( t.precio)'total', count(*)'cantidad'
+                                    from lavados l 
+                                    join tipos t on t.idTipo = l.idTipo
+                                    group by t.idTIpo, t.nombre";
+            con.Open();
+            cmd = new SqlCommand(consultasql, con);
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                DTOreporte dto = new DTOreporte();
+                dto.servicio = dr["servicio"].ToString();
+                dto.ventas = double.Parse(dr["total"].ToString());
+                dto.cantidadventastotales = int.Parse(dr["cantidad"].ToString());
+                lista.Add(dto);
+            }
+            dr.Close();
+            con.Close();
 
+            return lista;
         }
-        }
+
+    }
 }

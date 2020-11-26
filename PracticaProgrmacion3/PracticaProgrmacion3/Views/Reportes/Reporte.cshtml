@@ -1,0 +1,29 @@
+﻿@model List<PracticaProgrmacion3.Models.DTOreporte>
+@{
+    ViewBag.Title = "Reporte";
+}
+
+<h2>REPORTE VENTAS</h2>
+<div class="col-1"></div>
+<div class="col-10">
+    <table class="table table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th class="text-center">TIPO DE SERVICIO</th>
+                <th class="text-center">FACTURACION TOTAL</th>
+                <th class="text-center">CANTIDAD DE SERVICIOS</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var l in Model)
+            {
+                <tr>
+                    <td class="text-center">@l.servicio</td>
+                    <td class="text-center">@l.ventas</td>
+                    <td class="text-center">@l.cantidadventastotales</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="col-1"></div>
